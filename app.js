@@ -3,11 +3,13 @@ const { google } = require('googleapis');
 const express = require('express');
 const OAuth2Data = require('./google_key.json');
 
-const Client = require('pg');
+const Client = require('pg').Pool;
 
 
 const app = express();
 app.use(express.static('public'));
+
+const DATABASE_URL = 'postgres://ezaugnndofozrk:24532f65a8309ce140e316c55dff161933806223af7edb1df30629bda5c85b58@ec2-54-247-103-43.eu-west-1.compute.amazonaws.com:5432/dbmr5h1lajh04j';
 
 
 const CLIENT_ID = OAuth2Data.web.client_id;
@@ -19,12 +21,12 @@ var authed = false;
 
 app.get('/', (req, res) => {
 	res.send('Hello!!!!!!!');
-});
-
-app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
-
-
-const getUsers = (request, response) => {
+	
+	const client = new Pool({
+		connectionString: process.env.DATABASE_URL,
+	});
+	
+	const getUsers = (request, response) => {
 		console.log('Pobieram dane ...');
 		client.query('SELECT * FROM public."Users"', (error, res) => {
 		if (error) {
@@ -34,8 +36,16 @@ const getUsers = (request, response) => {
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row));
 		}
-	})
+	});
 }
+});
+
+//app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
+
+
+
+
+app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
 
 /*
 app.listen(process.env.PORT || 3000, function () {
