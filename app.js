@@ -11,7 +11,34 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!');
 });
 */
+const express = require('express');
+const Client = require('pg').Pool
 
+const client = new Pool({
+	connectionString: process.env.DATABASE_URL,
+})
+
+const getUsers = (request, response) => {
+	
+	console.log('Pobieram dane ...');
+
+	client.query('SELECT * FROM public."users"', (error, res) => {
+		if (error) {
+			throw error
+		}
+		console.log('Dostałem ...');
+		for (let row of res.rows) {
+			console.log(JSON.stringify(row));
+		}
+	})
+}
+/*
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+*/
+
+/*
 const { google } = require('googleapis');
 const express = require('express');
 const OAuth2Data = require('./google_key.json');
@@ -98,3 +125,4 @@ app.get('/auth/google/callback', function (req, res) {
 
 //const port = process.env.port || 5000;
 app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
+*/
