@@ -1,38 +1,35 @@
-/*
-var express = require('express');
 
-var app = express();
-
-app.get('/', function (req, res) {
-res.send('Hello World!');
-});
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Example app listening on port 3000!');
-});
-*/
+const { google } = require('googleapis');
 const express = require('express');
-const { Client } = require('pg');
+const OAuth2Data = require('./google_key.json');
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const Client = require('pg');
 
-client.connect();
 
-client.query('SELECT * FROM public."users"', (err, res) => {
-  if (error) {
+const app = express();
+app.use(express.static('public'));
+
+
+const CLIENT_ID = OAuth2Data.web.client_id;
+const CLIENT_SECRET = OAuth2Data.web.client_secret;
+const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
+
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
+var authed = false;
+
+
+const getUsers = (request, response) => {
+		console.log('Pobieram dane ...');
+		client.query('SELECT * FROM public."Users"', (error, res) => {
+		if (error) {
 			throw error
 		}
 		console.log('Dostałem ...');
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row));
 		}
-  client.end();
-});
+	})
+}
 
 /*
 app.listen(process.env.PORT || 3000, function () {
