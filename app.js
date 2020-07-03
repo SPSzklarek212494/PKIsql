@@ -19,10 +19,7 @@ const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 var authed = false;
 
-app.get('/', (req, res) => {
-	res.send('Hello!!!!!!!');
-	
-	const client = new Pool({
+const client = new Pool({
 		connectionString: process.env.DATABASE_URL,
 	});
 	
@@ -37,6 +34,11 @@ app.get('/', (req, res) => {
 			console.log(JSON.stringify(row));
 		}
 	});
+
+app.get('/', (req, res) => {
+	res.send('Hello!!!!!!!');
+	
+	
 	
 	res.send('Hello!!!!!!!');
 }
