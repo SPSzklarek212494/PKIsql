@@ -37,7 +37,7 @@ const client = new Pool({
 	*/
 	
 	
-
+app.get('/', (req, res) => {
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -48,11 +48,9 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM public."Users"', (error, res) => {
+client.query('SELECT * FROM public."Users"', (err, res) => {
 console.log('666666666666666');
-  if (error) {
-			throw error
-		}
+  //if (err) {throw err}
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
@@ -65,9 +63,9 @@ console.log('666666666666666');
 	
 	
 
-//app.get('/', (req, res) => {res.send('Hello!!!!!!!');});
+res.send('Hello!!!!!!!');});
 
-//app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
+app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
 
 
 
