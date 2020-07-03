@@ -3,7 +3,7 @@ const { google } = require('googleapis');
 const express = require('express');
 const OAuth2Data = require('./google_key.json');
 
-const Client = require('pg').Pool;
+const {Pool,Client} = require('pg');
 
 
 const app = express();
@@ -37,6 +37,8 @@ app.get('/', (req, res) => {
 			console.log(JSON.stringify(row));
 		}
 	});
+	
+	res.send('Hello!!!!!!!');
 }
 });
 
