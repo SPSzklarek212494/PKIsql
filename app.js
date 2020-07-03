@@ -33,7 +33,7 @@ const client = new Pool({
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row));
 		}
-	});
+	});}
 
 app.get('/', (req, res) => {
 	res.send('Hello!!!!!!!');
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 	
 	
 	res.send('Hello!!!!!!!');
-}
+
 });
 
 //app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
