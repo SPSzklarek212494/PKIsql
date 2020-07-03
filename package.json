@@ -1,0 +1,27 @@
+{
+  "name": "sebaapp",
+  "version": "1.0.0",
+  "description": "nic",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPSzklarek212494/sebaAPP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SPSzklarek212494/sebaAPP/issues"
+  },
+  "homepage": "https://github.com/SPSzklarek212494/sebaAPP#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "google-auth-library": "^6.0.2",
+    "googleapis": "^52.1.0",
+    "googleapis-common": "^4.4.0"
+  },
+  "devDependencies": {}
+}
