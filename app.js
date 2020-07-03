@@ -15,6 +15,8 @@ app.listen(process.env.PORT || 3000, function () {
 const { google } = require('googleapis');
 const express = require('express');
 const OAuth2Data = require('./google_key.json');
+const { Client } = require('pg');
+const Client = require('pg').Pool;
 
 const app = express();
 //app.use(express.static('public'));
@@ -49,6 +51,27 @@ app.get('/', (req, res) => {
 			}
 			res.send('Logged in: '.concat(loggedUser, ' <img src="', result.data.picture,
 			'"height="23" width="23">'));
+			
+			
+			const client = new Pool({
+				connectionString: process.env.DATABASE_URL,
+			});
+			
+			client.connect();
+			
+		const getUsers = (request, response) => {
+		console.log('Pobieram dane ...');
+		client.query('SELECT * FROM public."Users"', (error, res) => {
+				if (error) {
+					throw error
+				}
+				console.log('Dostałem ...');
+				for (let row of res.rows) {
+					console.log(JSON.stringify(row));
+				}
+			})
+		}
+						
 		});
     }
 })
