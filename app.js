@@ -15,7 +15,7 @@ app.listen(process.env.PORT || 3000, function () {
 const { google } = require('googleapis');
 const express = require('express');
 const OAuth2Data = require('./google_key.json');
-const { Client } = require('pg');
+//const { Client } = require('pg');
 const Client = require('pg').Pool;
 
 const app = express();
