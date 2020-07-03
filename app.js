@@ -48,20 +48,16 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM public."Users"', (err, res) => {
+client.query('SELECT * FROM public."users"', (err, res) => {
 console.log('666666666666666');
   //if (err) {throw err}
+  
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
   client.end();
 });	
-	
-	
-	
-	
-	
-	
+		
 
 res.send('Hello!!!!!!!');});
 
