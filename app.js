@@ -12,26 +12,28 @@ app.listen(process.env.PORT || 3000, function () {
 });
 */
 const express = require('express');
-const Client = require('pg').Pool
+const { Client } = require('pg');
 
-const client = new Pool({
-	connectionString: process.env.DATABASE_URL,
-})
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
-const getUsers = (request, response) => {
-	
-	console.log('Pobieram dane ...');
+client.connect();
 
-	client.query('SELECT * FROM public."users"', (error, res) => {
-		if (error) {
+client.query('SELECT * FROM public."users"', (err, res) => {
+  if (error) {
 			throw error
 		}
 		console.log('Dostałem ...');
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row));
 		}
-	})
-}
+  client.end();
+});
+
 /*
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!');
