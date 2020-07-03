@@ -17,6 +17,12 @@ const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 var authed = false;
 
+app.get('/', (req, res) => {
+	res.send('Hello!!!!!!!');
+});
+
+app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
+
 
 const getUsers = (request, response) => {
 		console.log('Pobieram dane ...');
