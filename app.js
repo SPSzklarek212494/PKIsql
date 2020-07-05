@@ -56,7 +56,14 @@ app.get('/', (req, res) => {
 //res.send(tab.toString());
 
 res.send(
-'<h1 style="color: red">NOWY DOKUMENT</h1>'
+'<h1 style="color: red">NOWY DOKUMENT</h1>',
+'<table id="my_table">',
+  '<tr>',
+    '<th>Name</th>',
+    '<th>Surname</th>',
+    '<th>Age</th>',
+  '</tr>',
+'</table>'
 );
 
 });
