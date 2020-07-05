@@ -33,15 +33,12 @@ const DATABASE_URL = 'postgres://ezaugnndofozrk:24532f65a8309ce140e316c55dff1619
 
 
 const pool = new Pool({
-	/*user:"ezaugnndofozrk",
+	user:"ezaugnndofozrk",
 	host:"ec2-54-247-103-43.eu-west-1.compute.amazonaws.com",
 	database:"dbmr5h1lajh04j",
 	password:"24532f65a8309ce140e316c55dff161933806223af7edb1df30629bda5c85b58",
-	port:5432*/
-	connectionString: process.env.DATABASE_URL,
-	ssl: {
-    rejectUnauthorized: false
-  }
+	port:5432,
+	connectionString: process.env.DATABASE_URL
 })
 pool.connect();
 
