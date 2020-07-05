@@ -65,7 +65,13 @@ res.send(
 	'<th>Counter</th>',
 	'<th>Last visit</th>',
   '</tr>',
-'</table>')
+'</table>',
+'<script>',
+	'forEach(let row in ',tab,') {',
+	  '$("#my_table").append("<tr><td>${row.id}</td><td>${row.name}</td><td>${row.joined}</td><td>${row.counter}</td><td>${row.lastvisit}</td> </tr>");}',
+'</script>'
+
+	)
 );
 
 });
