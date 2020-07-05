@@ -37,17 +37,12 @@ const pool = new Pool({
 pool.connect();
 
 var ilosc;
-var tab = [];
 var tab2;
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
-		//console.log(err,res)
-	//console.log("ILOSC");
+		
 	ilosc = res.rows.length;
-	for (let row of res.rows) {
-		tab.push(JSON.stringify(row));
-	}
-
+	
 	tab2 = res.rows;
 
 	pool.end()
@@ -58,11 +53,12 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 app.get('/', (req, res) => {
 
 //res.send(tab.toString());
-ilosc = tab.length;
+ilosc = tab2.length;
 var i = 0;
 
-res.send(JSON.stringify(tab2));
-/*
+//res.send(JSON.stringify(tab2));
+
+
 res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'.concat(
 '<h1 style="color: red">NOWY DOKUMENT</h1>',
 '<table id="my_table" >',
@@ -74,10 +70,20 @@ res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery
 	'<th>Last visit</th>',
   '</tr>',
  '</table>',
- '<script>
-	var dane = JSON.stringify()
+ '<script>',
+	'var dane1 = ',tab2,';'
+	'for(let row of ',res.rows,') {\'$("#my_table").append("<tr>',
+	'for(let row of dane1) {\'$("#my_table").append("<tr>',
+	  '<td>${row.id}</td>',
+	  '<td>${row.name}</td>',
+	  '<td>${row.joined}</td>',
+	  '<td>${row.counter}</td>',
+	  '<td>${row.lastvisit}</td>',
+	  '</tr>");}',
+	
+ '</script>',
  )
-);*/
+);
 
 });
 
