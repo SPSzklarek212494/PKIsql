@@ -63,8 +63,7 @@ app.get('/', (req, res) => {
 //res.send(JSON.stringify(tab2));
 
 
-res.send('<h1>cos</h1>'
-+'<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
+res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
 +'<h1 style="color: red">NOWY DOKUMENT</h1>'
 +'<table id="my_table" >'
 + '<tr>'
