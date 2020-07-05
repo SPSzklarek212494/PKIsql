@@ -41,7 +41,7 @@ var ilosc = 0;
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
 	console.log("ILOSC");
-	ilosc = res.rows.length;
+	//ilosc = res.rows.length;
 	for (let row of res.rows) {
 		console.log(JSON.stringify(row));
 	}
