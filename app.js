@@ -36,7 +36,7 @@ const pool = new Pool({
 })
 pool.connect();
 
-pool.query("SELECT * from public.users",(err,res)=>{
+pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 	console.log(err,res)
 	pool.end()
 })
