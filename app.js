@@ -37,7 +37,13 @@ const pool = new Pool({
 pool.connect();
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
-	console.log(err,res)
+	//console.log(err,res)
+	
+	console.log('Dostałem ...');
+	for (let row of res.rows) {
+		console.log(JSON.stringify(row));
+	}
+	
 	pool.end()
 })
 
