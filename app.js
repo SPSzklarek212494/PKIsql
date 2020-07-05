@@ -36,13 +36,13 @@ const pool = new Pool({
 })
 pool.connect();
 
-//var ilosc = 0;
+var ilosc;
 var tab = [];
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
 	//console.log("ILOSC");
-	//ilosc = res.rows.length;
+	ilosc = res.rows.length;
 	for (let row of res.rows) {
 		tab.push(JSON.stringify(row));
 	}
@@ -54,23 +54,7 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 app.get('/', (req, res) => {
 
 //res.send(tab.toString());
-
-var html = '<table class="table table-striped">';
-    html += '<tr>';
-    var flag = 0;
-    $.each(tab[0], function(index, value){
-        html += '<th>'+index+'</th>';
-    });
-    html += '</tr>';
-     $.each(tab, function(index, value){
-         html += '<tr>';
-        $.each(value, function(index2, value2){
-            html += '<td>'+value2+'</td>';
-        });
-        html += '<tr>';
-     });
-     html += '</table>';
-     $('body').html(html);
+ilosc = tab.length;
 
 res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" >',
@@ -83,7 +67,7 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
   '</tr>',
 '</table>',
 '<script>',
-	'for(let row of ',tab,') {\'$("#my_table").append("<tr>',
+	'for(var i = 0; i<',ilosc,';i++) {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
 	  '<td>${row.name}</td>',
 	  '<td>${row.joined}</td>',
