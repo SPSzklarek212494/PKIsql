@@ -36,14 +36,15 @@ const pool = new Pool({
 })
 pool.connect();
 
-var ilosc = 0;
+//var ilosc = 0;
+var tab = [];
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
 	//console.log("ILOSC");
-	ilosc = res.rows.length;
+	//ilosc = res.rows.length;
 	for (let row of res.rows) {
-		console.log(JSON.stringify(row));
+		tab.push(JSON.stringify(row));
 	}
 		
 	pool.end()
@@ -52,9 +53,9 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 
 app.get('/', (req, res) => {
 
-res.send(ilosc.toString());
-ilosc = 0;
-res.send(ilosc.toString());
+res.send(tab.length.toString());
+
+
 });
 
 app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
