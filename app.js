@@ -71,7 +71,7 @@ res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery
   '</tr>',
  '</table>',
  '<script>',
-	'var dane1 = ',JSON.stringify(tab2),';',
+	'var dane1 = ',tab2,';',
 	'forEach(let row of dane1) {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
 	  '<td>${row.name}</td>',
