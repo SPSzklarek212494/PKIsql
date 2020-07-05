@@ -55,8 +55,7 @@ app.get('/', (req, res) => {
 
 //res.send(tab.toString());
 
-res.send(
-'<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
+res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" class="table table-bordered table-striped">',
   '<tr>',
     '<th>ID</th>',
@@ -67,16 +66,14 @@ res.send(
   '</tr>',
 '</table>',
 '<script>',
-	'forEach(let row in ',tab,') {\'$("#my_table").append("<tr>',
+	'forEach(let row in tab) {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
 	  '<td>${row.name}</td>',
 	  '<td>${row.joined}</td>',
 	  '<td>${row.counter}</td>',
 	  '<td>${row.lastvisit}</td>',
 	  '</tr>");}',
-'</script>'
-
-	)
+'</script>')
 );
 
 });
