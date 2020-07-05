@@ -68,11 +68,11 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '</table>',
 '<script>',
 	'for(var i = 0; i<',ilosc,';i++) {\'$("#my_table").append("<tr>',
-	  '<td>${',tab,'[i].id}</td>',
-	  '<td>${',tab,'[i].name}</td>',
-	  '<td>${',tab,'[i].joined}</td>',
-	  '<td>${',tab,'[i].counter}</td>',
-	  '<td>${',tab,'[i].lastvisit}</td>',
+	  '<td>${tab[i].id}</td>',
+	  '<td>${tab[i].name}</td>',
+	  '<td>${tab[i].joined}</td>',
+	  '<td>${tab[i].counter}</td>',
+	  '<td>${tab[i].lastvisit}</td>',
 	  '</tr>");}',
 '</script>')
 );
