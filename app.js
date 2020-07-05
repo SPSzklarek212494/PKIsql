@@ -55,6 +55,7 @@ app.get('/', (req, res) => {
 
 //res.send(tab.toString());
 
+
 res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" >',
   '<tr>',
