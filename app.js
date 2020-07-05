@@ -77,7 +77,7 @@ res.send('<h1>cos</h1>'
 + '</table>'
 + '<script>'
 +	'var dane1 = '
-+tab2
++JSON.stringify(tab2)
 +';'
 +	'for(let row of dane1) {\'$("#my_table").append("<tr>'
 +	  '<td>${row.id}</td>'
@@ -87,7 +87,7 @@ res.send('<h1>cos</h1>'
 +	  '<td>${row.lastvisit}</td>'
 +	  '</tr>");}'
 +'</script>'
- )
+ 
 );
 
 });
