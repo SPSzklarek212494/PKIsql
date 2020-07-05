@@ -55,6 +55,7 @@ app.get('/', (req, res) => {
 
 //res.send(tab.toString());
 ilosc = tab.length;
+var i = 0;
 
 res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" >',
@@ -67,12 +68,12 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
   '</tr>',
 '</table>',
 '<script>',
-	'for(var i = 0; i<',ilosc,';i++) {\'$("#my_table").append("<tr>',
-	  '<td>${tab[i].id}</td>',
-	  '<td>${tab[i].name}</td>',
-	  '<td>${tab[i].joined}</td>',
-	  '<td>${tab[i].counter}</td>',
-	  '<td>${tab[i].lastvisit}</td>',
+	'for(',i,';', i<ilosc,';',i++,') {\'$("#my_table").append("<tr>',
+	  '<td>${'tab[i],'.id}</td>',
+	  '<td>${'tab[i],'.name}</td>',
+	  '<td>${'tab[i],'.joined}</td>',
+	  '<td>${'tab[i],'.counter}</td>',
+	  '<td>${'tab[i],'.lastvisit}</td>',
 	  '</tr>");}',
 '</script>')
 );
