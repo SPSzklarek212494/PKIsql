@@ -57,10 +57,10 @@ app.get('/', (req, res) => {
 
 res.send(
 '<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
-'<table id="my_table">',
+'<table id="my_table" class="table table-bordered table-striped">',
   '<tr>',
     '<th>ID</th>',
-    '<th>Namee</th>',
+    '<th>Name</th>',
     '<th>Joined</th>',
 	'<th>Counter</th>',
 	'<th>Last visit</th>',
