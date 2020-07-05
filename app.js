@@ -51,6 +51,7 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 	tab2 = res.rows;
 
 	pool.end()
+	console.log('222222222222222222222222222222222');
 })
 
 
@@ -59,7 +60,7 @@ app.get('/', (req, res) => {
 //res.send(tab.toString());
 ilosc = tab.length;
 var i = 0;
-
+console.log('1111111111111111111111111111111');
 res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" >',
   '<tr>',
