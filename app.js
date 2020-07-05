@@ -53,7 +53,7 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 
 app.get('/', (req, res) => {
 
-res.send(tab[0].name.toString());
+res.send(tab[0].toString());
 
 
 });
