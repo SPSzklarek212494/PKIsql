@@ -36,12 +36,12 @@ const pool = new Pool({
 })
 pool.connect();
 
-var ilosc;
+//var ilosc;
 var tab2;
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		
-	ilosc = res.rows.length;
+	//ilosc = res.rows.length;
 	
 	tab2 = res.rows;
 
@@ -53,8 +53,8 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 app.get('/', (req, res) => {
 
 //res.send(tab.toString());
-ilosc = tab2.length;
-var i = 0;
+
+
 
 //res.send(JSON.stringify(tab2));
 
@@ -71,7 +71,7 @@ res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery
   '</tr>',
  '</table>',
  '<script>',
-	'var dane1 = ',tab2,';'
+	'var dane1 = ',JSON.stringify(tab2),';'
 	'for(let row of ',res.rows,') {\'$("#my_table").append("<tr>',
 	'for(let row of dane1) {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
