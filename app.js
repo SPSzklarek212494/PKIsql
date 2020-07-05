@@ -53,35 +53,38 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 app.get('/', (req, res) => {
 
 //res.send(tab.toString());
-
-
-
+/*
+'<td>${row.id}</td>'
++	  '<td>${row.name}</td>'
++	  '<td>${row.joined}</td>'
++	  '<td>${row.counter}</td>'
++	  '<td>${row.lastvisit}</td>'
+*/
 //res.send(JSON.stringify(tab2));
 
 
-res.send('<h1>cos</h1>'+'<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'.concat(
-'<h1 style="color: red">NOWY DOKUMENT</h1>',
-'<table id="my_table" >',
-  '<tr>',
-    '<th>ID</th>',
-    '<th>Name</th>',
-    '<th>Joined</th>',
-	'<th>Counter</th>',
-	'<th>Last visit</th>',
-  '</tr>',
- '</table>',
- '<script>',
-	'var dane1 = ',JSON.stringify(tab2),
-	';',
-	'forEach(let row of dane1) {\'$("#my_table").append("<tr>',
-	  '<td>${row.id}</td>',
-	  '<td>${row.name}</td>',
-	  '<td>${row.joined}</td>',
-	  '<td>${row.counter}</td>',
-	  '<td>${row.lastvisit}</td>',
-	  '</tr>");}',
-	
- '</script>',
+res.send('<h1>cos</h1>'
++'<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
++'<h1 style="color: red">NOWY DOKUMENT</h1>'
++'<table id="my_table" >'
++ '<tr>'
++    '<th>ID</th>'
++    '<th>Name</th>'
++    '<th>Joined</th>'
++	'<th>Counter</th>'
++	'<th>Last visit</th>'
++  '</tr>'
++ '</table>'
++ '<script>'
++	'var dane1 = '+JSON.stringify(tab2)+';'
++	'for(let row of dane1) {\'$("#my_table").append("<tr>'
++	  '<td>${row.id}</td>'
++	  '<td>${row.name}</td>'
++	  '<td>${row.joined}</td>'
++	  '<td>${row.counter}</td>'
++	  '<td>${row.lastvisit}</td>'
++	  '</tr>");}'
++'</script>'
  )
 );
 
