@@ -48,6 +48,9 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 		tab.push(JSON.stringify(row));
 	}*/
 		tab = res.rows;
+		
+		res.render('index', {  srt: tab });
+		
 	pool.end()
 })
 
