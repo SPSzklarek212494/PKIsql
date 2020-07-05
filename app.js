@@ -51,7 +51,7 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 	tab2 = res.rows;
 
 	pool.end()
-	console.log('222222222222222222222222222222222');
+	
 })
 
 
@@ -60,8 +60,11 @@ app.get('/', (req, res) => {
 //res.send(tab.toString());
 ilosc = tab.length;
 var i = 0;
-console.log('1111111111111111111111111111111');
-res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
+
+res.send(JSON.stringify(tab2));
+/*
+res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'.concat(
+'<h1 style="color: red">NOWY DOKUMENT</h1>',
 '<table id="my_table" >',
   '<tr>',
     '<th>ID</th>',
@@ -69,8 +72,12 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
     '<th>Joined</th>',
 	'<th>Counter</th>',
 	'<th>Last visit</th>',
-  '</tr>')
-);
+  '</tr>',
+ '</table>',
+ '<script>
+	var dane = JSON.stringify()
+ )
+);*/
 
 });
 
