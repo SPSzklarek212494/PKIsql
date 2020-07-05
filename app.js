@@ -35,33 +35,22 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL
 })
 pool.connect();
-/*
+
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
+	console.log("ILOSC");
+	console.log(res.rows.length);
+	for (let row of res.rows) {
+		console.log(JSON.stringify(row));
+	}
 		
-		console.log('Dostałem ...');
-		for (let row of res.rows) {
-			console.log(JSON.stringify(row));
-		}
-		
-		pool.end()
-	})
-*/
+	pool.end()
+})
+
 
 app.get('/', (req, res) => {
 
-	pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
-		//console.log(err,res)
-		
-		res.send('Dostałem ...');
-		for (let row of res.rows) {
-			console.log(JSON.stringify(row));
-		}
-		
-		pool.end()
-	})
 
-
-//res.send('Hello!!!!!!!');});
+res.send('Hello!!!!!!!');});
 
 app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
