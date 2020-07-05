@@ -59,9 +59,11 @@ res.send(
 '<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table">',
   '<tr>',
-    '<th>Name</th>',
-    '<th>Surname</th>',
-    '<th>Age</th>',
+    '<th>ID</th>',
+    '<th>Namee</th>',
+    '<th>Joined</th>',
+	'<th>Counter</th>',
+	'<th>Last visit</th>',
   '</tr>',
 '</table>')
 );
