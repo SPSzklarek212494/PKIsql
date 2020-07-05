@@ -37,19 +37,15 @@ const pool = new Pool({
 pool.connect();
 
 //var ilosc = 0;
-var tab;
+var tab = [];
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
 	//console.log("ILOSC");
 	//ilosc = res.rows.length;
-	/*
 	for (let row of res.rows) {
 		tab.push(JSON.stringify(row));
-	}*/
-		tab = res.rows;
-		
-		res.render('index', {  srt: tab });
+	}
 		
 	pool.end()
 })
@@ -57,9 +53,25 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 
 app.get('/', (req, res) => {
 
-res.send(tab.toString());
+//res.send(tab.toString());
 
-/*
+var html = '<table class="table table-striped">';
+    html += '<tr>';
+    var flag = 0;
+    $.each(tab[0], function(index, value){
+        html += '<th>'+index+'</th>';
+    });
+    html += '</tr>';
+     $.each(tab, function(index, value){
+         html += '<tr>';
+        $.each(value, function(index2, value2){
+            html += '<td>'+value2+'</td>';
+        });
+        html += '<tr>';
+     });
+     html += '</table>';
+     $('body').html(html);
+
 res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 '<table id="my_table" >',
   '<tr>',
@@ -80,7 +92,7 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 	  '</tr>");}',
 '</script>')
 );
-*/
+
 });
 
 app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
