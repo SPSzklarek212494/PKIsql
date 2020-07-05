@@ -34,25 +34,29 @@ const pool = new Pool({
 	port:5432*/
 	connectionString: process.env.DATABASE_URL
 })
+pool.connect();
+
+//var ilosc = 0;
+var tab = [];
+
+pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
+		//console.log(err,res)
+	//console.log("ILOSC");
+	//ilosc = res.rows.length;
+	for (let row of res.rows) {
+		tab.push(JSON.stringify(row));
+	}
+		
+	pool.end()
+})
 
 
 app.get('/', (req, res) => {
 
-	pool.connect();
-	var tab = [];
+//res.send(tab.toString());
 
-	pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
-			//console.log(err,res)
-		//console.log("ILOSC");
-		//ilosc = res.rows.length;
-		/*
-		for (let row of res.rows) {
-			tab.push(JSON.stringify(row));
-		}*/
-		
-		
-		res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
-'<table id="my_table" class="table table-bordered table-striped">',
+res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
+'<table id="my_table" >',
   '<tr>',
     '<th>ID</th>',
     '<th>Name</th>',
@@ -62,7 +66,7 @@ app.get('/', (req, res) => {
   '</tr>',
 '</table>',
 '<script>',
-	'for(let row of ',res.rows,') {\'$("#my_table").append("<tr>',
+	'for(let row of 'tab,') {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
 	  '<td>${row.name}</td>',
 	  '<td>${row.joined}</td>',
@@ -71,12 +75,6 @@ app.get('/', (req, res) => {
 	  '</tr>");}',
 '</script>')
 );
-		
-			
-		pool.end()
-	})
-
-
 
 });
 
