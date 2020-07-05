@@ -66,7 +66,7 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
   '</tr>',
 '</table>',
 '<script>',
-	'for(let row of 'tab,') {\'$("#my_table").append("<tr>',
+	'for(let row of ',tab,') {\'$("#my_table").append("<tr>',
 	  '<td>${row.id}</td>',
 	  '<td>${row.name}</td>',
 	  '<td>${row.joined}</td>',
