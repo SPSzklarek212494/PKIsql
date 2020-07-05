@@ -38,6 +38,7 @@ pool.connect();
 
 var ilosc;
 var tab = [];
+var tab2;
 
 pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)=>{
 		//console.log(err,res)
@@ -46,7 +47,9 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 	for (let row of res.rows) {
 		tab.push(JSON.stringify(row));
 	}
-		
+
+	tab2 = res.rows;
+
 	pool.end()
 })
 
@@ -66,7 +69,7 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 	'<th>Counter</th>',
 	'<th>Last visit</th>',
   '</tr>',
-'</table>',
+
 '<script>',
 	'for(',i,';', i<ilosc,';',i++,') {\'$("#my_table").append("<tr>',
 	  '<td>${'tab[i],'.id}</td>',
@@ -75,7 +78,8 @@ res.send('<h1 style="color: red">NOWY DOKUMENT</h1>'.concat(
 	  '<td>${'tab[i],'.counter}</td>',
 	  '<td>${'tab[i],'.lastvisit}</td>',
 	  '</tr>");}',
-'</script>')
+'</script>',
+'</table>')
 );
 
 });
