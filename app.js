@@ -53,7 +53,7 @@ pool.query("SELECT id,name,joined,counter,lastvisit from public.users",(err,res)
 app.get('/', (req, res) => {
 
 
-res.send(ilosc);
+res.send(2);
 });
 
 app.listen(process.env.PORT || 5000, function(){ console.log('Server running at ${port}')});
