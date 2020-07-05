@@ -79,7 +79,7 @@ res.send('<h1>cos</h1>'
 +	'var dane1 = '
 +JSON.stringify(tab2)
 +';'
-+	'for(let row of dane1) {\'$("#my_table").append("<tr>'
++	'for(let row of dane1) {$("#my_table").append("<tr>'
 +	  '<td>${row.id}</td>'
 +	  '<td>${row.name}</td>'
 +	  '<td>${row.joined}</td>'
