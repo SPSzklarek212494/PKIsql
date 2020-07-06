@@ -52,7 +52,7 @@ if (!authed) {
 
 			res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
 			+'<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />'
-			+'Logged in: '+loggedUser+' <img src="'+result.data.picture+'"height="23" width="23">'
+			+'<h1>Logged in: '+loggedUser+' <img src="'+result.data.picture+'"height="23" width="23"></h1>'
 			+'<h3 style="color: red">TABELA DANYCH Z PosgreSQL</h3>'
 			+'<table class="table table-bordered table-striped" style="color: green" id="my_table" >'
 			+ '<tr>'
