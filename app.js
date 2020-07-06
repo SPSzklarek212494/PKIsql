@@ -64,8 +64,8 @@ app.get('/', (req, res) => {
 
 
 res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
-+'<h1 style="color: red">NOWY DOKUMENT</h1>'
-+'<table id="my_table" >'
++'<h3 style="color: red">TABELA SQL</h1>'
++'<table style="color: green" id="my_table" >'
 + '<tr>'
 +    '<th>ID</th>'
 +    '<th>Name</th>'
