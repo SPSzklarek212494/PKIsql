@@ -64,12 +64,12 @@ app.get('/', (req, res) => {
 
 
 res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
-+'<h3 style="color: red">TABELA SQL</h1>'
-+'<table style="color: green" id="my_table" >'
++'<h3 style="color: red">TABELA SQL</h3>'
++'<table class="w3-table w3-striped w3-border" style="color: green" id="my_table" >'
 + '<tr>'
 +    '<th>ID</th>'
 +    '<th>Name</th>'
-+    '<th>Joined</th>'
++    '<th class="w3-center">Joined</th>'
 +	'<th>Counter</th>'
 +	'<th>Last visit</th>'
 +  '</tr>'
