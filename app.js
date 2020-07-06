@@ -64,12 +64,13 @@ app.get('/', (req, res) => {
 
 
 res.send('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>'
++'<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />'
 +'<h3 style="color: red">TABELA SQL</h3>'
-+'<table class="w3-table w3-striped w3-border" style="color: green" id="my_table" >'
++'<table class="table table-bordered table-striped" style="color: green" id="my_table" >'
 + '<tr>'
 +    '<th>ID</th>'
 +    '<th>Name</th>'
-+    '<th class="w3-center">Joined</th>'
++    '<th>Joined</th>'
 +	'<th>Counter</th>'
 +	'<th>Last visit</th>'
 +  '</tr>'
